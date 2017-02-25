@@ -1,0 +1,11 @@
+{
+  "lambda": {
+    "role": "hh-bot-executor",
+    "name": "hh-bot",
+    "region": "eu-central-1"
+  },
+  "api": {
+    "id": "sqcbtbiere",
+    "module": "bot"
+  }
+}

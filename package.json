@@ -1,0 +1,11 @@
+{
+  "name": "hh-bot",
+  "version": "1.0.0",
+  "dependencies": {
+    "claudia-bot-builder": "^2.13.2",
+    "huh": "^2.0.1",
+    "install": "^0.8.7",
+    "npm": "^4.3.0",
+    "telegram-bot-api": "^1.2.0"
+  }
+}
