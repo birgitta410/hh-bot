@@ -36,7 +36,7 @@ module.exports = botBuilder(function (message) {
             .addReplyKeyboard([
             [ NEED_ADVICE ],
             [ NO_THANKS ]
-            ])
+          ], true, true)
             // .oneTimeKeyboard(true)
             .get()
     } else if(message.text === NO_THANKS) {
