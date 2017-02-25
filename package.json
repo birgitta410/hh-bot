@@ -1,11 +1,22 @@
 {
   "name": "hh-bot",
   "version": "1.0.0",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "files": [
+    "bot.js", "bot/secretsVault.js", "bot/telegramApi.js"
+  ],
   "dependencies": {
     "claudia-bot-builder": "^2.13.2",
     "huh": "^2.0.1",
     "install": "^0.8.7",
+    "lodash": "^4.17.4",
     "npm": "^4.3.0",
+    "q": "^1.4.1",
     "telegram-bot-api": "^1.2.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.3"
   }
 }
