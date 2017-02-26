@@ -1,5 +1,5 @@
 
-const secrets = require('./secretsVault').secrets();
+const secrets = require('./secretsVault').secrets;
 
 const telegram = require('telegram-bot-api');
 const api = new telegram({
