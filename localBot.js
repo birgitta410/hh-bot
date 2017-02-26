@@ -1,6 +1,7 @@
 const telegram = require('telegram-bot-api');
 const secrets = require('./bot/secretsVault').secrets;
 const conversation = require('./bot/conversation');
+const melanomaAnalyser = require('./bot/melanomaAnalyser');
  
 var api = new telegram({
     token: secrets.telegram,
@@ -31,9 +32,16 @@ api.on('message', function(message)
       text: response.text
     };
 
-    if(response.fileId) {
-      getPhoto(response.fileId).then(function(data) {
-        console.log(`Got URL! ${data}`);
+    if(response.fileIdForAnalysis) {
+      getPhoto(response.fileIdForAnalysis).then(function(fileUrl) {
+        console.log(`Got URL! ${fileUrl}`);
+        melanomaAnalyser.analyse(fileUrl).then((analysisResult) => {
+          console.log(`analysis result ${analysisResult}`);
+          requestOptions.text = JSON.stringify(analysisResult);
+          api.sendMessage(requestOptions).then(function(data) {
+            console.log(`MESSAGE SENT`);
+          });
+        }).done();
       });
     } else if(response.filePath) {
       requestOptions.photo = response.filePath;

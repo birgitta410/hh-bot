@@ -38,8 +38,8 @@ describe('conversation', () => {
           undefined, undefined, './skin-cancer-abcde.jpg');
       });
       it('upload picture', () => {
-        const response = conversation.respond({ photo: 'some-file-id' });
-        expect(response.text).toContain('not implemented');
+        const response = conversation.respond({ photo: [{ file_id: 'some-file-id' }] });
+        expect(response.fileIdForAnalysis).toBe('some-file-id');
       });
     });
 
