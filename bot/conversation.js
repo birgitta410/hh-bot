@@ -51,6 +51,8 @@ exports.respond = function (message) {
             [ NEED_APPOINTMENT ]
           ]
       };
+    } else if(messageText === NEED_APPOINTMENT) {
+      return { text: 'Here is a great site that will help you with that: https://my-dermatologist.com. Thanks for chatting with me, see you soon!' };
     } else if(messageText === DO_YOU_WANT_ME_TO_LOOK) {
       return {
         text: 'Do you want me to have a look at a mole for you?',

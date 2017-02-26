@@ -5,7 +5,12 @@ describe('conversation', () => {
 
   function spec(input, responseText, responseOptions, filePath) {
     const response = conversation.respond({ message: { text: input }});
-    expect(response.text).toBe(responseText);
+    if(response.text === undefined) {
+      expect(response.text).toBe(responseText);
+    } else {
+      expect(response.text).toContain(responseText);
+    }
+    
     expect(response.options).toEqual(responseOptions);
     expect(response.filePath).toBe(filePath);
   }
@@ -44,7 +49,10 @@ describe('conversation', () => {
     });
 
     describe('want appointment', () => {
-      
+      it('respond with a link', () => {
+        spec('I need an appointment with a dermatologist.',
+          'Here is a great site that will help you with that: https://my-dermatologist.com');
+      });
     });
     
   });
