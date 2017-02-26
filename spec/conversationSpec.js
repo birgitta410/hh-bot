@@ -19,14 +19,14 @@ describe('conversation', () => {
     it('/start', () => {
       spec('/start', 
         'Hello, this is the Hacking Health bot! How can I help you?',
-        [['I need some advice about skin cancer.'], ['I need an appointment with a dermatologist.']]);
+        [['I need some advice about skin cancer.'], ['I need an appointment with a dermatologist.'], ['Cancel']]);
     });
 
-    // it('hi', () => {
-    //   spec('hi', 
-    //     'Hello, this is the Hacking Health bot! How can I help you?',
-    //     [['I need some advice about skin cancer.'], ['I need an appointment with a dermatologist.']]);
-    // });
+    it('hi', () => {
+      spec('hi', 
+        'Hello, this is the Hacking Health bot! How can I help you?',
+        [['I need some advice about skin cancer.'], ['I need an appointment with a dermatologist.'], ['Cancel']]);
+    });
 
     describe('need advice', () => {
       it('initial question', () => {

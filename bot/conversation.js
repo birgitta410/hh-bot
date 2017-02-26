@@ -43,12 +43,13 @@ exports.respond = function (message) {
       return { text: PLEASE_UPLOAD_MOLE };
     } else if(messageText === NO_ADVICE_JUST_INFO) {
       return { filePath: './skin-cancer-abcde.jpg' };
-    } else if(messageText === CMD_START || _.find(HI, messageText) !== undefined) {
+    } else if(messageText === CMD_START || _.find(HI, (el) => { return el === messageText; }) !== undefined) {
       return { 
         text: `Hello, this is the Hacking Health bot! How can I help you?`,
         options: [
             [ NEED_ADVICE ],
-            [ NEED_APPOINTMENT ]
+            [ NEED_APPOINTMENT ],
+            ['Cancel']
           ]
       };
     } else if(messageText === NEED_APPOINTMENT) {
@@ -58,8 +59,10 @@ exports.respond = function (message) {
         text: 'Do you want me to have a look at a mole for you?',
         options: [['Yes, please!'], ['No, just some general info, please.']]
       };
+    } else if(messageText === 'Cancel') {
+      return { text: 'Ok, see you soon.' };
     } else {
-        return { text: `Sorry, I don\'t understand - type /start to begin. | Request: ${JSON.stringify(message)}` };
+      return { text: `Sorry, I don\'t understand - type /start to begin. | Request: ${JSON.stringify(message)}` };
     }
     
 };
