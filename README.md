@@ -21,6 +21,11 @@ claudia update
 ```
 !!! Files in `.gitignore` will not be included!
 
+### Run bot locally, not with Claudia
+```
+node localBot.js
+```
+
 ### Project
 ```
 npm install

@@ -5,7 +5,7 @@
     "test": "jasmine"
   },
   "files": [
-    "bot.js", "bot/secretsVault.js", "bot/telegramApi.js"
+    "bot.js", "bot/secretsVault.js", "bot/telegramApi.js", "bot/conversation.js"
   ],
   "dependencies": {
     "claudia-bot-builder": "^2.13.2",
