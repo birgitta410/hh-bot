@@ -19,24 +19,24 @@ describe('conversation', () => {
     it('/start', () => {
       spec('/start', 
         'Hello, this is the Hacking Health bot! How can I help you?',
-        [['I need some advice about skin cancer.'], ['I need an appointment with a dermatologist.'], ['Cancel']]);
+        [['I want to start my botservation.'], ['I need an appointment with my dermatologist.'], ['Cancel']]);
     });
 
     it('hi', () => {
       spec('hi', 
         'Hello, this is the Hacking Health bot! How can I help you?',
-        [['I need some advice about skin cancer.'], ['I need an appointment with a dermatologist.'], ['Cancel']]);
+        [['I want to start my botservation.'], ['I need an appointment with my dermatologist.'], ['Cancel']]);
     });
 
     describe('need advice', () => {
       it('initial question', () => {
-        spec('I need some advice about skin cancer.', 
-          'Do you want me to have a look at a mole for you?',
+        spec('I want to start my botservation.', 
+          'current image of your condition',
           [['Yes, please!'], ['No, just some general info, please.']]);
       });
       it('answer yes', () => {
         spec('Yes, please!', 
-          'Please upload an image of the mole that worries you');
+          'discussed with your doctor');
       });
       it('answer no', () => {
         spec('No, just some general info, please.', 

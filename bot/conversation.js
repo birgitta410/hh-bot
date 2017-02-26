@@ -6,11 +6,11 @@ exports.respond = function (message) {
 
     const CMD_START = '/start';
     const HI = ['Hi', 'hi', 'hallo', 'Hallo'];
-    const NEED_ADVICE = 'I need some advice about skin cancer.';
-    const NEED_APPOINTMENT = 'I need an appointment with a dermatologist.';
-    const DO_YOU_WANT_ME_TO_LOOK = 'Do you want me to have a look at a mole for you?';
+    const NEED_ADVICE = 'I want to start my botservation.';
+    const NEED_APPOINTMENT = 'I need an appointment with my dermatologist.';
+    const DO_YOU_WANT_ME_TO_LOOK = 'Do you want to record a current image of your condition?';
     const YES_PLEASE_ADVICE = 'Yes, please!';
-    const PLEASE_UPLOAD_MOLE = 'Please upload an image of the mole that worries you';
+    const PLEASE_UPLOAD_MOLE = 'Please upload an image of the part of your skin you discussed with your doctor.';
     const NO_ADVICE_JUST_INFO = 'No, just some general info, please.';
 
     const messageText = message.message ? message.message.text : message.text;
@@ -53,7 +53,7 @@ exports.respond = function (message) {
           ]
       };
     } else if(messageText === NEED_APPOINTMENT) {
-      return { text: 'Here is a great site that will help you with that: https://my-dermatologist.com. Thanks for chatting with me, see you soon!' };
+      return { text: 'Here is a great site that will help you with that: https://my-awesome-dermatologist-sample-link.com. Thanks for chatting with me, see you soon!' };
     } else if(messageText === DO_YOU_WANT_ME_TO_LOOK) {
       return {
         text: 'Do you want me to have a look at a mole for you?',
@@ -62,7 +62,7 @@ exports.respond = function (message) {
     } else if(messageText === 'Cancel') {
       return { text: 'Ok, see you soon.' };
     } else {
-      return { text: `Sorry, I don\'t understand - type /start to begin. | Request: ${JSON.stringify(message)}` };
+      return { text: `Sorry, I don\'t understand - type /start to begin.` };
     }
     
 };

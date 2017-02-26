@@ -24,23 +24,13 @@ exports.analyse = (fileUrl) => {
       } else {
         console.log(`Received a result ${body}`);
         const result = _.last(JSON.parse(body));
-      
-        if(result.result === 'negative') {
-          if(result.confidence >= 0.8) {
-            defer.resolve('Looks ok to me! Remember that I\'m not a doctor though, I make mistakes...');
-          } else {
-            defer.resolve('Looks ok - I\'m not quite sure though, so be sure to go to your doctor to get another opinion.');
-          }
-          
-        } else if(result.result === "positive") {
-          if(result.confidence >= 0.8) {
-            defer.resolve('Oh-oh - go see a doctor!');
-          } else {
-            defer.resolve('I\'m not quite sure, maybe you should go see your doctor about this.');
-          }
-        } else {
-          defer.resolve('I\'m having some trouble, please try again later');
-        }
+        
+        defer.resolve('Thanks, we stored this picture so you can show it to your doctor ' +
+          'at your next appointment.\n\n' +
+          'EXCLUSIVELY FOR HACKING HEALTH DEMO\n' + 
+          'Here is the result of the analysis prepared for the doctor!\n' +
+          `Result: ${result.result} (is probably ${result.result === 'negative' ? 'benign' : 'malignant'})\n` +
+          `Confidence in result: ${result.confidence}`);
         
       }
         
