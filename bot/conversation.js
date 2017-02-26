@@ -21,15 +21,6 @@ exports.respond = function (message) {
           text: `Received a photo ${fileId}`,
           fileId: fileId
         };
-        
-        // const photo = telegramApi.getPhoto(fileId).then((photoData) => {
-        //     console.log(`I got the photo data! ${photoData}`);
-        //     return { text: `I got your photo!`, fileId: fileId };
-        //     // return new telegramTemplate.Photo(fileId, `I got your photo!`).get();
-        // }).catch((err) => {
-        //     console.log(`Received an error trying to get photo... ${JSON.stringify(err)}`);
-        //     return { text: 'I could not store your photo, sorry...', fileId: fileId };
-        // });
     } else if(message.photo) {
       const photoInfo = message.photo;
       const fileId = _.last(photoInfo).file_id;
