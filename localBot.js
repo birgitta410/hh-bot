@@ -21,6 +21,12 @@ const getPhoto = (id) => {
     });
 };
 
+const sendText = (requestOptions) => {
+  api.sendMessage(requestOptions).then(function(data) {
+    console.log(`MESSAGE SENT`);
+  });
+};
+
 api.on('message', function(message)
 {
     console.log(message);
@@ -35,12 +41,12 @@ api.on('message', function(message)
     if(response.fileIdForAnalysis) {
       getPhoto(response.fileIdForAnalysis).then(function(fileUrl) {
         console.log(`Got URL! ${fileUrl}`);
-        melanomaAnalyser.analyse(fileUrl).then((analysisResult) => {
-          console.log(`analysis result ${analysisResult}`);
-          requestOptions.text = JSON.stringify(analysisResult);
-          api.sendMessage(requestOptions).then(function(data) {
-            console.log(`MESSAGE SENT`);
-          });
+        requestOptions.text = 'I received your image. Give me some time to look at this, I\'ll get back to you shortly.';
+        sendText(requestOptions);
+        melanomaAnalyser.analyse(fileUrl).then((analysisResultText) => {
+          console.log(`analysis result ${analysisResultText}`);
+          requestOptions.text = analysisResultText;
+          sendText(requestOptions);
         }).done();
       });
     } else if(response.filePath) {
@@ -59,9 +65,7 @@ api.on('message', function(message)
         });
       }
       console.log(`Trying to send text response ${response.text}...`);
-      api.sendMessage(requestOptions).then(function(data) {
-          console.log(`MESSAGE SENT`);
-      });
+      sendText(requestOptions);
     }
     
 });
