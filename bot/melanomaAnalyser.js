@@ -22,27 +22,26 @@ exports.analyse = (fileUrl) => {
         console.log('ERROR', 'failed to get ' + requestOptions.url, error);
         defer.reject(error);
       } else {
+        console.log(`Received a result ${body}`);
         const result = _.last(JSON.parse(body));
-
+      
         if(result.result === 'negative') {
           if(result.confidence >= 0.8) {
-            return 'Looks ok to me! Remember that I\'m not a doctor though, I make mistakes...';
+            defer.resolve('Looks ok to me! Remember that I\'m not a doctor though, I make mistakes...');
           } else {
-            return 'Looks ok - I\'m not quite sure though, so be sure to go to your doctor to get another opinion.';
+            defer.resolve('Looks ok - I\'m not quite sure though, so be sure to go to your doctor to get another opinion.');
           }
           
         } else if(result.result === "positive") {
           if(result.confidence >= 0.8) {
-            return 'Oh-oh - go see a doctor!';
+            defer.resolve('Oh-oh - go see a doctor!');
           } else {
-            return 'I\'m not quite sure, maybe you should go see your doctor about this.';
+            defer.resolve('I\'m not quite sure, maybe you should go see your doctor about this.');
           }
+        } else {
+          defer.resolve('I\'m having some trouble, please try again later');
         }
         
-        // 'We prepared your picture and some analysis for the doctor.'
-        // 'But what the hell, for hacking health, we\'ll give you the result'
-
-        defer.resolve(result);
       }
         
     });
