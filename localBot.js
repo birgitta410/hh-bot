@@ -35,6 +35,13 @@ api.on('message', function(message)
       getPhoto(response.fileId).then(function(data) {
         console.log(`Got URL! ${data}`);
       });
+    } else if(response.filePath) {
+      requestOptions.photo = response.filePath;
+      // requestOptions.caption = ...
+      api.sendPhoto(requestOptions)
+        .then(function(data) {
+            console.log(`PHOTO SENT`);
+        });
     } else {
       if(response.options) {
         requestOptions.reply_markup = JSON.stringify({
