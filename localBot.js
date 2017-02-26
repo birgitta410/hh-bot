@@ -36,19 +36,17 @@ api.on('message', function(message)
         console.log(`Got URL! ${data}`);
       });
     } else {
+      if(response.options) {
+        requestOptions.reply_markup = JSON.stringify({
+          keyboard: response.options,
+          one_time_keyboard: true,
+          resize_keyboard: true
+        });
+      }
       console.log(`Trying to send text response ${response.text}...`);
       api.sendMessage(requestOptions).then(function(data) {
           console.log(`MESSAGE SENT`);
       });
     }
-
-    // Crashes the bot - deprioritising solving this problem at the moment
-    // if(response.options) {
-    //   requestOptions.reply_markup = {
-    //     // keyboard: response.options,
-    //     // one_time_keyboard: true,
-    //     // resize_keyboard: true
-    //   };
-    // }    
     
 });
