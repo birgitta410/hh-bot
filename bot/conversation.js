@@ -30,8 +30,7 @@ exports.respond = function (message) {
       const fileId = _.last(photoInfo).file_id;
       console.log(`Received a photo! ${fileId}`)
       return {
-        text: `Received a photo ${fileId}`,
-        fileId: fileId
+        text: `Let's have a look... Unfortunately, this is not implemented yet because ${excuse.get()}`
       };
     } else if(message.originalRequest && message.originalRequest.message && message.originalRequest.message.document) {
         console.log(`Received a document`);

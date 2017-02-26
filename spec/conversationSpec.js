@@ -37,6 +37,10 @@ describe('conversation', () => {
         spec('No, just some general info, please.', 
           undefined, undefined, './skin-cancer-abcde.jpg');
       });
+      it('upload picture', () => {
+        const response = conversation.respond({ photo: 'some-file-id' });
+        expect(response.text).toContain('not implemented');
+      });
     });
 
     describe('want appointment', () => {
