@@ -1,4 +1,6 @@
 
+Playing around with chatbots at "Hacking Health" hackathon in Berlin
+
 ## Set up
 
 ### AWS
